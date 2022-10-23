@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import mq from '../../MediaQuery';
 
 
 
@@ -8,31 +9,48 @@ const AboutContainer = styled.header`
     display: flex;
     justify-content: center;
     align-items: center; 
-    padding: 80px 30px; 
+    margin: 0 auto;
+    width: 80%;
+    
+    ${mq.maxWidth('md')`
+         width: 100%;
+    `}
 
     .content_img {
         opacity: 0.7;
+        padding-right: 30px; 
     }
 
     .content_img img {
-        width: 500px;
+        width: 100%;
+
+        ${mq.maxWidth('sm')`
+            display: none;  
+        `}
+            
     }
 
 
     .content_txt {
-        width: 500px;
-        padding: 50px 50px;
-        justify-content: center;
+        width: 90%;
+        padding: 50px 20px;
         text-align: center;
         opacity: 0.8;
+        margin: 0 auto;
+        /* background-color: pink; */
+        
+        ${mq.maxWidth('sm')`
+             width: 100%;
+             margin: 0 auto;
+             padding: 50px 10px;
+         `}
     }
 
 
     .content_txt h1 {
-        font-size: 40px;
-        margin-bottom: 40px;
-        
+        font-size: 35px;
     }
+
     .content_txt h5 {
         font-size: 20px;
         padding: 30px 0;
@@ -40,14 +58,14 @@ const AboutContainer = styled.header`
 
     .content_txt p {
         line-height: 40px;
-        font-size: 18px;
+        font-size: 14px;
         text-align: start;
-        background-color: #eee;
+        line-height: 1.8;
     }
 
     hr {
         color: black;
-    }
+    }   
 
 `
 
@@ -61,7 +79,8 @@ const About = () => {
             <h1>About Catering</h1>
             <br />
             <h5>Tradition since 1889</h5>
-            <p><span>The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use seasonal ingredients.</span></p>
+            <p><span>The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use seasonal ingredients.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>
         </div>
 
         <hr />

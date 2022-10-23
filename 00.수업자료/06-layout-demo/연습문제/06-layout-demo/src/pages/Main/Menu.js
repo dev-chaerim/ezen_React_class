@@ -1,22 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import mq from '../../MediaQuery';
 
 
 const MenuContainer = styled.div`
     
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 30px;
+    padding: 80px 0;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+    /* background-color: pink; */
+
+    ${mq.maxWidth('lg')`
+         flex-direction: column;
+    `}
 
     .content_menu_list {
-        width: 400px;
-        padding: 50px 50px;
+        width: 50%;
+        padding-right: 50px;
         justify-content: center;
         text-align: justify;
         opacity: 0.8;
         /* background-color: #807d7d; */
+        
+        ${mq.maxWidth('lg')`
+            width: 100%;
+            padding: 30px 0;
+        `}
     }
 
     .content_menu_list h1 {
@@ -26,14 +37,16 @@ const MenuContainer = styled.div`
 
     .content_menu_list h4 {
         margin: 16px 0;
+        font-weight: bold;
     }
 
     .content_menu_list p {
         font-size: 12px;
+        width: 100%;
     }
 
     .content_menu_img img {
-        width: 400px;
+        width: 100%;
     }
 
     .main_contents hr {

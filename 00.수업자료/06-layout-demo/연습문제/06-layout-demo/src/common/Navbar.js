@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-// import mq from '../MediaQuery';
+import mq from '../MediaQuery';
 
 const NavbarContainer = styled.nav`
     display: flex;
@@ -13,7 +13,7 @@ const NavbarContainer = styled.nav`
     position: fixed;
     z-index: 1;
     width: 100%;
-    font-size: 20px;
+    font-size: 16px;
 
 
     .navbarLogo {
@@ -42,6 +42,10 @@ const NavbarContainer = styled.nav`
     .navbarLogo:hover {
         background-color: #d5d5d5;
     }
+
+    ${mq.maxWidth('md')`
+        font-size: 13px;
+    `}
 `
 
 function Navbar() {

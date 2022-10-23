@@ -1,22 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-
-
+import mq from '../../MediaQuery';
 
 const ContactContainer = styled.div`
     
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 0;
+    padding: 30px;
+    /* background-color: blue; */
+    width: 80%;
+    margin: 0 auto;
 
+    ${mq.maxWidth('md')`
+         width: 90%;
+
+    `}
+    
     h1 {
-    font-size: 30px;
-}
+        font-size: 30px;
+    }
 
     .contact_t {
-        width: 900px;
+        
         padding: 18px 0;
     }
 
@@ -27,11 +30,19 @@ const ContactContainer = styled.div`
     }
 
     .input_form{
-        width: 880px;
         padding: 18px;
         margin-top: 10px;
         border-width: 0 0 1px 0;
         border-color: #d1d1d1;
+        /* background-color: yellow;  */
+        
+    }
+
+    input[type="text"],
+    input[type="date"] {
+        width: 100%;
+        padding: 16px 8px;
+
     }
 
     .input_btn {

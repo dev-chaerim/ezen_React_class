@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import mq from '../../MediaQuery';
 
 
 
@@ -11,6 +12,11 @@ const HeaderImg = styled.header`
     .headerImg {
         width: 100%;
         opacity: 0.7;
+
+        ${mq.maxWidth('md')`
+            width: 100%;
+            font-size: 10px;
+         `}
     }
 
     .headerTxt {
@@ -18,9 +24,13 @@ const HeaderImg = styled.header`
         color: #807d7d;
         font-size: 35px;
         position: absolute;
-        bottom: 40px;
-        left: 50px;
+        bottom: 30px;
+        left: 25px;
     }
+
+    
+
+
 
 `
 
