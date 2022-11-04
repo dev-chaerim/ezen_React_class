@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
-import {json, useLocation, useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 
 
@@ -27,6 +27,7 @@ const Professor = () => {
           params: keyword ? {name: keyword} : null
         })
         json = response.data;
+        console.log("@@@@@@useEffect")
       } catch(e) {
         console.error(e);
         alert('Ajax 연동실패')
@@ -58,12 +59,12 @@ const Professor = () => {
     const deptno = form.deptno.value;
 
     (async ()=> {
-      setLoading(true);
+      setLoading(loading => true);
 
       let json = null;
 
       try {
-        const response = await axios.post("professor", {
+        const response = await axios.post("/professor", {
           name: name,
           userid : userid,
           position : position,
@@ -81,7 +82,7 @@ const Professor = () => {
         console.error(e);
         alert(`데이터 저장에 실패했습니다. \n${e.message}`)
       } finally {
-        setLoading(false);
+        setLoading(loading => false);
       }
       
       setProfessor(professor => professor.concat(json));
@@ -95,6 +96,7 @@ const Professor = () => {
     const current =  e.currentTarget;
     const id = parseInt(current.dataset.id);
     setUpdateId(id);
+    console.log("@@@@edit click");
   }, [])
 
   const onDataEditSubmit = useCallback((e)=> {
@@ -110,9 +112,10 @@ const Professor = () => {
     const comm = current.comm.value;
     const deptno = current.deptno.value;
 
-    console.log('current', current);
+    console.log('@@@current id', id);
 
     (async ()=>{
+        let json = null;
         try {
           const response = await axios.put(`/professor/${id}`,{
             name: name,
@@ -132,7 +135,7 @@ const Professor = () => {
             console.error(e);
             alert(`데이터 수정에 실패했습니다. \n${e.message}`)
         } finally {
-            setLoading(false)
+            setLoading(loading => false)
         }
       
         setProfessor((professor) => {
@@ -179,6 +182,7 @@ const Professor = () => {
       return professor;
     })
     })();
+
   }, [])
 
   return (
@@ -275,8 +279,8 @@ const Professor = () => {
                       <td>{item.hiredate}</td>
                       <td>{item.comm}</td>
                       <td>{item.deptno}</td>
-                      <td><button type="button" data-id = {item.id} onClick={onDataEditClick}>수정하기</button></td>
-                      <td><button type="button" data-id = {item.id} onClick={onDataDeleteClick}>삭제하기</button></td>
+                      <td><button type="button" data-id={item.id} onClick={onDataEditClick}>수정하기</button></td>
+                      <td><button type="button" data-id={item.id} onClick={onDataDeleteClick}>삭제하기</button></td>
                     </tr>
                   )
                 }

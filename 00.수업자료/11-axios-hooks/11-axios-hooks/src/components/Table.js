@@ -35,6 +35,11 @@ const Table = styled.table`
       border-right: 0;
     }
   }
+
+  tfoot {
+    background-color: #f0f6f9;
+    font-weight: bold;
+  }
   
 `
 

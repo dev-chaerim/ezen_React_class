@@ -125,7 +125,6 @@ const Department = () => {
         const current = e.currentTarget;
         const id = parseInt(current.dataset.id);
         setUpdateId(id);
-        
     }, [])
 
     //수정한 데이터 전송 이벤트
