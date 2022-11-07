@@ -59,7 +59,7 @@ const Professor = () => {
     const deptno = form.deptno.value;
 
     (async ()=> {
-      setLoading(loading => true);
+      setLoading(true);
 
       let json = null;
 
@@ -116,6 +116,7 @@ const Professor = () => {
 
     (async ()=>{
         let json = null;
+        setLoading(true);
         try {
           const response = await axios.put(`/professor/${id}`,{
             name: name,
@@ -135,7 +136,7 @@ const Professor = () => {
             console.error(e);
             alert(`데이터 수정에 실패했습니다. \n${e.message}`)
         } finally {
-            setLoading(loading => false)
+            setLoading(false)
         }
       
         setProfessor((professor) => {
