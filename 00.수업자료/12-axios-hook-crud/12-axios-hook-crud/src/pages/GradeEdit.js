@@ -107,12 +107,12 @@ const GradeEdit = memo(() => {
                     <tbody>
                         <tr>
                             <th>이름</th>
-                            <td className='inputWrapper'><input className="field" type="text" name="name"/></td>
+                            <td className='inputWrapper'><input className="field" type="text" name="name" defaultValue={data.name}/></td>
                         </tr>
                         <tr>
                             <th>학년</th>
                             <td className='inputWrapper'>
-                                <select name="level" className="field">
+                                <select name="level" className="field" defaultValue={data.level}>
                                     <option value="">----선택하세요----</option>
                                     <option value="1">1학년</option>
                                     <option value="2">2학년</option>
@@ -124,32 +124,32 @@ const GradeEdit = memo(() => {
                         <tr>
                             <th>성별</th>
                             <td className='inputWrapper'>
-                                <label><input type="radio" name="sex" value="남자"/>남자</label>
-                                <label><input type="radio" name="sex" value="여자"/>여자</label>
+                                <label><input type="radio" name="sex" value="남자" defaultValue={data.sex === '남자'}/>남자</label>
+                                <label><input type="radio" name="sex" value="여자"defaultValue={data.sex === '여자'}/>여자</label>
                             </td>
                         </tr>
                         <tr>
                             <th>국어</th>
                             <td className='inputWrapper'>
-                                <input className='field' type="number" name="kor" placeholder='숫자만 입력 (0~100)'/>
+                                <input className='field' type="number" name="kor" placeholder='숫자만 입력 (0~100)' defaultValue={data.kor}/>
                             </td>
                         </tr>
                         <tr>
                             <th>영어</th>
                             <td className='inputWrapper'>
-                                <input className='field' type="number" name="eng" placeholder='숫자만 입력 (0~100)'/>
+                                <input className='field' type="number" name="eng" placeholder='숫자만 입력 (0~100)' defaultValue={data.eng}/>
                             </td>
                         </tr>
                         <tr>
                             <th>수학</th>
                             <td className='inputWrapper'>
-                                <input className='field' type="number" name="math" placeholder='숫자만 입력 (0~100)'/>
+                                <input className='field' type="number" name="math" placeholder='숫자만 입력 (0~100)' defaultValue={data.math}/>
                             </td>
                         </tr>
                         <tr>
                             <th>과학</th>
                             <td className='inputWrapper'>
-                                <input className='field' type="number" name="sin" placeholder='숫자만 입력 (0~100)'/>
+                                <input className='field' type="number" name="sin" placeholder='숫자만 입력 (0~100)' defaultValue={data.sin}/>
                             </td>
                         </tr>
                     </tbody>
