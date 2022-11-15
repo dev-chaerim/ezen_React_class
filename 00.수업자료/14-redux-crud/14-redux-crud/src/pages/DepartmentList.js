@@ -5,7 +5,7 @@ import ErrorView from '../components/ErrorView';
 import Table from '../components/Table';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { getList } from '../slices/DepartmentSlice';
+import { deleteItem, getList } from '../slices/DepartmentSlice';
 
 import styled from 'styled-components';
 import { useQueryString } from '../hooks/useQueryString';
@@ -65,11 +65,32 @@ const DepartmentList = () => {
         navigate(redirectUrl);
     }, [navigate])
 
+    const onDepartmentItemDelete = useCallback((e)=>{
+        e.preventDefault();
+
+        const current = e.currentTarget;
+        const {id, dname} = current.dataset;
+        console.log(id, dname);
+        if(window.confirm(`정말 ${dname}(을)를 삭제하시겠습니까?`)){
+            console.log("id", id);
+            dispatch(deleteItem({
+                id: id
+            }))
+        }
+    }, [])
+
+    const onDepartmentEditClick = useCallback((e)=>{
+        e.preventDefault();
+        const current = e.currentTarget;
+        const {id} = current.dataset;
+        navigate(`/department_edit/${id}`)
+    },[])
+
     return (
         <div>
             <Spinner loading={loading}/>
             <ControlContainer onSubmit={onSearchSubmit}>
-                <input type="text" name="keyword" classname="controll"/>
+                <input type="text" name="keyword" className="controll"/>
                 <button type="submit" className="controll clickable">검색</button>
                 <NavLink to="department_add" className="controll clickable">학과정보 추가하기</NavLink>
             </ControlContainer>
@@ -97,12 +118,12 @@ const DepartmentList = () => {
                                                 <td>{v.dname}</td>
                                                 <td>{v.loc}</td>
                                                 <td>
-                                                    <button type='button'>
+                                                    <button type='button' data-id={v.id} onClick={onDepartmentEditClick}>
                                                         수정하기
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <button type='button'>
+                                                    <button type='button' data-id={v.id} data-dname={v.dname} onClick={onDepartmentItemDelete}>
                                                         삭제하기
                                                     </button>
                                                 </td>
