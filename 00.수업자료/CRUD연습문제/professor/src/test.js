@@ -5,14 +5,14 @@ import { getList, getItem, postItem, putItem, deleteItem } from './slices/Profes
 
 const Test = memo(() => {
     const dispatch = useDispatch();
-    const {data, loading, error} = useSelector((state) => state.DepartmentSlice);
+    const {data, loading, error} = useSelector((state) => state.ProfessorSlice);
 
     useEffect(()=>{
         dispatch(getList());
         // dispatch(getItem({id:203}));
-        // dispatch(postItem({dname: 'React.js', loc: '1403호'}));
-        // dispatch(putItem({id: 203, dname: 'React.js 수정2', loc: '1406호'}));
-        // dispatch(deleteItem({id:204}));
+        // dispatch(postItem({name: 'React.js3', userid: 'test3'}));
+        // dispatch(putItem({id: 9915, name: 'React.js 수정', userid: 'test 수정'}));
+        dispatch(deleteItem({id:9909}));
     }, [dispatch])
     return(
         loading ? "loading..." : (
