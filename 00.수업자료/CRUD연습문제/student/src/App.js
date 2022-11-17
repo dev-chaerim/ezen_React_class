@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {memo} from 'react';
+import {Routes, Route } from "react-router-dom";
+import StudentAdd from './pages/StudentAdd';
+import StudentEdit from './pages/StudentEdit';
+import StudentList from './pages/StudentList';
+import StudentView from './pages/StudentView';
 
-function App() {
+const App = memo(() => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Student</h1>
+      
+      <Routes>
+        <Route path='/' exapt={true} element={<StudentList/>}/>
+        <Route path='/student_add' element={<StudentAdd/>}/>
+        <Route path='/student_view/:id' element={<StudentView/>}/>
+        <Route path='/student_edit/:id' element={<StudentEdit/>}/>
+      </Routes>
     </div>
   );
-}
+})
 
 export default App;

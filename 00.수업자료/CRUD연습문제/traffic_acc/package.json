@@ -1,5 +1,5 @@
 {
-  "name": "student",
+  "name": "traffic_acc",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
