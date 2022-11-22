@@ -1,6 +1,10 @@
 import React, {memo, useCallback} from "react";
 import styled from "styled-components";
-import { NavLink, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getItem, setDate } from '../slices/CovidSlice';
+import { Routes, Route } from "react-router-dom";
+import Covid19 from "../pages/Covid19";
 
 const ControlContainer = styled.form`
     position: sticky;
@@ -35,6 +39,9 @@ const ControlContainer = styled.form`
 
 const Top = memo(() => {
 
+    const dispatch = useDispatch();
+    const {gte, lte} = useSelector((state) => state.CovidSlice);
+
     const navigate = useNavigate();
 
     const onSearchSubmit = useCallback((e) => {
@@ -43,9 +50,10 @@ const Top = memo(() => {
         const covidGte = current.covid_gte;
         const covidLte = current.covid_lte;
         console.log(covidGte.value, covidLte.value);
-        let redirectUrl = covidGte.value && covidLte.value? `covid19/?covid_gte=${covidGte.value}&covid_lte=${covidLte.value}` : '/';
-        navigate(redirectUrl);
-    }, [navigate])
+       dispatch(setDate({gte:covidGte.value, lte:covidLte.value}))
+
+       navigate('/covid19')
+    }, [])
 
     return (
         <div>
@@ -57,6 +65,7 @@ const Top = memo(() => {
 
                 <button type="submit" className="controll clickable">검색</button>
             </ControlContainer>
+
         </div>
     )
 })

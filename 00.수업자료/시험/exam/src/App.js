@@ -6,9 +6,10 @@ import Covid19 from './pages/Covid19';
 const App = memo(() => {
   return (
     <div>
+      <Top/>
+      {/* <Covid19/> */}
       <Routes>
-        <Route path="/" exapt={true} element={<Top/>}/>
-        <Route path="/covid19" element={<Covid19/>}/>
+        <Route path="/covid19/*" element={<Covid19/>}/>
       </Routes>
     </div>
   );
